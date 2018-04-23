@@ -1,4 +1,4 @@
-#spring核心原理
+##spring核心原理
 标签：spring IOC控制反转 DI依赖注入
 
 >说起`spring`的核心是什么，基本上都知道是`IOC`、`AOP`，但是究竟什么是`IOC`、`AOP`呢？
