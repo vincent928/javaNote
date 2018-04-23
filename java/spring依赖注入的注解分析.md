@@ -1,4 +1,4 @@
-#spring注入的注解
+##spring注入的注解
 
 ------
 >@Autowired
@@ -55,8 +55,8 @@ private Demo demo;
 *如果`autowired by qualifier name` 失败，会退化为`autowired by field name`。但是不会继续退化为`autowired by type`
 
 
-#总结
-在使用上可以用@Inject,这是JSR330规范的实现，而@Autowired是spring的实现，如果不用spring，则用不到这个注解。
+##总结
+>在使用上可以用@Inject,这是JSR330规范的实现，而@Autowired是spring的实现，如果不用spring，则用不到这个注解。
 而@Resource则是JSR250规范的实现，这是多年以前的规范。
 
 
