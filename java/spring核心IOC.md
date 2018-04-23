@@ -18,7 +18,7 @@
 
 >###IoC的一个重点是在系统运行中，动态的向某个对象提供它所需要的其他对象。
 这一点是通过DI（Dependency Injection，依赖注入）来实现的。比如对象A需要操作数据库，以前我们总是要在A中自己编写代码来获得一个`Connection`对象，有了spring我们就只需要告诉spring，A中需要一个`Connection`，至于这个`Connection`怎么构造，何时构造，A不需要知道。在系统运行时，spring会在适当的时候制造一个`Connection`，然后像打针一样，注射到A当中，这样就完成了对各个对象之间关系的控制。A需要依赖`Connection`才能正常运行，而这个`Connection`是由spring注入到A中的，`依赖注入`的名字就这么来的。那么DI是如何实现的呢？Java1.3之后一个重要特征是`反射（reflection）`，它允许程序在运行的时候动态的生成对象、执行对象的方法、改变对象的属性，spring就是通过反射来实现注入的。关于反射的相关资料请查阅java doc。
-```
+```java
 public static void main(String[] args){
 	ApplicationContext context = new FileSystemXmlApplicationContext(
 									"applicationContext.xml");
@@ -32,7 +32,7 @@ public static void main(String[] args){
 </bean>
 ------
 ###test.Cat类
-```
+```java
 public class Cat implements Animal {
 	private String name;
 	public void say(){
@@ -53,7 +53,7 @@ public interface Animal{
 那么，spring是如何实现的呢？
 
 ###首先定义一个Bean类。用于存放该Bean类属性方法
-```
+```java
 private String id;
 private String type;
 private Map<String,Object> properties = new HashMap<String,Object>();
@@ -62,7 +62,7 @@ private Map<String,Object> properties = new HashMap<String,Object>();
 接下来spring就开始加载我们的配置文件，将我们的配置信息保存在一个 HashMap中，map中的key就是Bean的id，value就是这个Bean。
 只有这样我们才能通过context.getBean("animal")这个方法获得Animal这个对象。String可以注入基本类型，而且可以注入像List，Map这样的类型。
 以Map为例，看看spring是如何保存的。
-```
+```xml
 <bean id="test" class="Test">
 	<property name="testMap">
 		<map>
@@ -78,7 +78,7 @@ private Map<String,Object> properties = new HashMap<String,Object>();
 ```
 
 ###而spring是如何保存上面的配置呢？
-```
+```java
 if (beanProperty.element("map") != null){
 	Map<String,Object> propertiesMap = new HashMap<String,Object>();
 	Element propertiesListMap = (Element)beanProperty.elements().get(0);
@@ -108,7 +108,7 @@ if (beanProperty.element("map") != null){
 ###那么spring是如何依赖注入的呢？
 >其实依赖注入的思想也很简单，它是通过反射机制实现的，在实例化一个类的时候，它通过反射调用类中set方法将事先保存在HashMap中的类
 属性注入到类中，首先实例化一个类：
-```
+```java
 public static Object newInstance(String className){
 		Class<?> cls = null;
 		Object obj = null;
@@ -126,7 +126,7 @@ public static Object newInstance(String className){
 }
 ```
 >接着把类的依赖注入进去：
-```
+```java
 public static void setProperty(Object obj,String name,String value){
 	Class<? extends Object> clazz = obj.getClass();
 	try{
@@ -153,7 +153,7 @@ public static void setProperty(Object obj,String name,String value){
 }
 ```
 >最后它将这个类的实例返回给我们，我们就可以用了。以Map为例，创建一个HashMap,并将该HashMap注入到需要注入的类中：
-```
+```java
 if(value instanceof Map){
 		Iterator<? extends Map.Entry<?, ?>> iterator = ((Map<?, ?>) value).entrySet().iterator();
 		Map<String,Object> map = new HashMap<String,Object>();
