@@ -1,10 +1,10 @@
 # spring注入的注解
-
+tags：spring 注解 @Autowired @Inject @Resource
 ------
 >@Autowired
 * org.springframework.bean.factory
 * spring
-@Autowired是spring提供的注解，通过`AutowiredAnnotationBeanPostProcessor`类实现的依赖注入，与@Inject两者可互换使用
+>@Autowired是spring提供的注解，通过`AutowiredAnnotationBeanPostProcessor`类实现的依赖注入，与@Inject两者可互换使用
 @Autowired有个`required`属性，可以配置为false。若配置为false后，spring上下文没有找到对应的bean时，不会抛错误，会让这个
 bean处于未装配状态。如果代码没有进行null检查的话，这个未装配状态的属性可能会出现`NullPointerException`
 
@@ -17,7 +17,7 @@ private Demo demo;
 >@Inject
 * javax.inject
 * JSR330(Dependency Injection for Java)
-这是JSR330中的规范，通过`AutowiredAnnotationBeanPostProcessor`类实现的依赖注入
+>这是JSR330中的规范，通过`AutowiredAnnotationBeanPostProcessor`类实现的依赖注入
 
 ```java
 @Inject
@@ -27,7 +27,7 @@ private Demo demo;
 >@Resource
 * javax.annotation
 * JSR250(Common Annotations for Java)
-这是JSR250中的规范，`@Resource`通过`CommonAnnotationBeanPostProcessor`类实现的依赖注入
+>这是JSR250中的规范，`@Resource`通过`CommonAnnotationBeanPostProcessor`类实现的依赖注入
 
 `@Resource`一般会指定一个`name`属性
 ```java
