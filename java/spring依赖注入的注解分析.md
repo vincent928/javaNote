@@ -1,5 +1,5 @@
 # spring注入的注解
-tags：spring 注解 @Autowired @Inject @Resource
+标签： spring 注解 @Autowired @Inject @Resource
 ------
 >@Autowired
 * org.springframework.bean.factory
