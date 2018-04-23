@@ -2,8 +2,6 @@
 
 标签： spring 注解 @Autowired @Inject @Resource
 
-标签： Cmd-Markdown
-
 ------
 >@Autowired
 * org.springframework.bean.factory
