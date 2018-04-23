@@ -1,15 +1,13 @@
 #spring核心原理
-tags：spring IOC控制反转 DI依赖注入
 
+>tags：spring IOC控制反转 DI依赖注入
 ------
 >说起`spring`的核心是什么，基本上都知道是`IOC`、`AOP`，但是究竟什么是`IOC`、`AOP`呢？
 程序员将对象的生命周期都交给`spring`管理，需要的时候，`spring`会创建并注入。那么`spring`究竟是怎么实现的呢？
-当程序员没有`spring`框架之前又是怎么写代码的呢？
-
+#当程序员没有`spring`框架之前又是怎么写代码的呢？
 >`IOC`：控制反转，`DI`：依赖注入。
 `DI`是对`IOC`的另一种说法，由`Martin Fowler` 在2004年初的一篇论文中首次提出的。他总结：控制的什么被`反转`了？就是：获得`依赖对象的方式`反转了。
-
->IOC（Inversion of Control）控制反转，这是spring的核心，它贯穿了spring的始终。那么究竟什么是IOC呢？其实对于spring框架来说，就是由spring容器来控制管理对象的生命周期和对象间的关系。
+IOC（Inversion of Control）控制反转，这是spring的核心，它贯穿了spring的始终。那么究竟什么是IOC呢？其实对于spring框架来说，就是由spring容器来控制管理对象的生命周期和对象间的关系。
 
 ------
 ##举个例子：	
