@@ -28,11 +28,13 @@ public static void main(String[] args){
 }
 ```
 ### 分析一下以上的代码。首先是applicationContext.xml
+```xml
 <bean id="animal" class="test.Cat">
 		<property name="name" value="kitty">
 </bean>
+```	
 ------
-###test.Cat类
+### test.Cat类
 ```java
 public class Cat implements Animal {
 	private String name;
