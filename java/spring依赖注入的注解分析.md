@@ -1,7 +1,7 @@
 #spring注入的注解
 
-
-@Autowired
+------
+>@Autowired
 *org.springframework.bean.factory
 *spring
 @Autowired是spring提供的注解，通过`AutowiredAnnotationBeanPostProcessor`类实现的依赖注入，与@Inject两者可互换使用
@@ -14,8 +14,7 @@ private Demo demo;
 ```
 
 
-@Inject
-
+>@Inject
 *javax.inject
 *JSR330(Dependency Injection for Java)
 这是JSR330中的规范，通过`AutowiredAnnotationBeanPostProcessor`类实现的依赖注入
@@ -25,7 +24,7 @@ private Demo demo;
 private Demo demo;
 ```
 
-@Resource
+>@Resource
 *javax.annotation
 *JSR250(Common Annotations for Java)
 这是JSR250中的规范，`@Resource`通过`CommonAnnotationBeanPostProcessor`类实现的依赖注入
@@ -38,18 +37,18 @@ private Demo demo;
 
 #这些注解之间的不同之处
 
-`@Inject`和`@Autowired`基本上是一样的，因为两者都是通过`AutowiredAnnotationBeanPostProcessor`实现依赖注入，但是@Resource不同，
+>`@Inject`和`@Autowired`基本上是一样的，因为两者都是通过`AutowiredAnnotationBeanPostProcessor`实现依赖注入，但是@Resource不同，
 它通过`CommonAnnotationBeanPostProcessor`来处理依赖注入。当然，都是`BeanPostProcessor`
 
 ------
 
-*`@Autowired`和`@Inject`
+>*`@Autowired`和`@Inject`
 *默认 `autowired by type` 通过类型进行装配
 *可以通过`@Qualifier`显示指定 `autowired by qualifier name`
 
 ------
 
-*@Resource
+>*@Resource
 *默认 `autowired by field name` 通过域名进行装配
 *如果 `autowired by field name` 注入失败，则会退化为 `autowired by type`进行注入
 *可以通过@Qualifier显示指定 `autowired by qualifier name`
