@@ -15,7 +15,9 @@ Eclipse:Alt+Shift+S，可以生成构造器/Getter/Setter等
 IDEA:Alt+Insert，可以生成构造器/Getter/Setter等
 
 
-
 Eclipse:Ctrl+L,Ctrl+2   自动补全返回值
 IDEA:Ctrl+Alt+V         自动补全返回值
 
+
+Eclipse:   
+IDEA:Ctrl+O         实现方法
