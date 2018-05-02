@@ -1,4 +1,4 @@
-IDEA快捷键：
+﻿IDEA快捷键：
 
 
 包相关：
@@ -21,3 +21,9 @@ IDEA:Ctrl+Alt+V         自动补全返回值
 
 Eclipse:   
 IDEA:Ctrl+O         实现方法
+
+Eclipse:Ctrl+2,Ctrl+L
+IDEA:Ctrl+Alt+V     	 抽取变量
+
+Eclipse:Alt+up/down
+IDEA:Shift+Alt+up/down   移动行代码
