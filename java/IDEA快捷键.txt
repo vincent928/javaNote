@@ -27,3 +27,5 @@ IDEA:Ctrl+Alt+V     	 抽取变量
 
 Eclipse:Alt+up/down
 IDEA:Shift+Alt+up/down   移动行代码
+
+IDEA:Shift + F6    重命名变量名

@@ -1,0 +1,39 @@
+1． 文本消息 TextMessage
+将数据作为简单字符串存放在主体中(XML就可以作为字符串发)
+TextMessage msg = session.createTextMessage();
+msg.setText(text);
+有些厂商支持一种XML专用的消息格式，带来了便利，但是不是标准的JMS类型，影响移植性
+只自己定义了两个方法setText(String s)、getText()
+2． 映射表消息 MapMessage
+使用一张映射表来存放其主体内容
+参照Jms API
+MapMessage msg = session.createMapMessage();
+msg.setString(“CUSTOMER_NAME”,”John”);
+msg.setInt(“CUSTOMER_AGE”,12);
+String s = msg.getString(“CUSTOMER_NAME”);
+int age = msg.getInt(“CUSTOMER_AGE”);
+3． 字节消息 BytesMessage
+将字节流存放在消息主体中。适合于下列情况：必须压缩发送的大量数据、需要与现有消息格式保持一致等
+参照Jms API
+byte[] data;
+BytesMessage msg = session.createBytesMessage();
+msg.wirte(data);
+byte[] msgData = new byte[256];
+int bytesRead = msg.readBytes(msgData);
+4． 流消息 StreamMessage
+用于处理原语类型。这里也支持属性字段和MapMessage所支持的数据类型。
+使用这种消息格式时，收发双发事先协商好字段的顺序，以保证写读顺序相同
+参照Jms API
+StringMessage msg = session.createStreamMessage();
+msg.writeString(“John”);
+msg.writeInt(12);
+String s = msg.readString();
+        int age = msg.readInt();
+5． 对象消息 ObjectMessage
+用于往消息中写入可序列化的对象。
+消息中可以存放一个对象，如果要存放多个对象，需要建立一个对象集合，然后把这个集合写入消息。
+客户端接收到一个ObjectMessage时，是read-only模式。如果一个客户端试图写message，将会抛出MessageNotWriteableException。如果调用了clearBody方法，message既可以读又可以写
+自己只单独定义了两个方法：getObject()和setObject(Serializable s)
+ObjectMessage包含的只是object的一个快照，set之后object的修改对ObjectMessage的body无效
+Message只读时被set抛出MessageNotWriteableException;
+set和get时，如果对象序列化失败抛出MessageFormatException
