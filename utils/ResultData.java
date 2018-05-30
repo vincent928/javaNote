@@ -1,4 +1,4 @@
-package com.alipay.springboot.alipayspringboot.Result;
+
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * @DESCRIPTION ：数据返回实体
  * @AUTHOR ：sky
- * @CREATETIME ：2018-05-30 9:07
  **/
 @Data
 public class ResultData implements Serializable {
